@@ -72,7 +72,8 @@ class Section extends Component {
           }}>
           <div className="grid-sizer"/>
           {
-            this.props.images.map((x,i) => <Photo key={i} name={x} zoomOn={this.props.zoomOn} />) 
+            this.props.images.map((x,i) => 
+              <Photo key={i} name={x} zoomOn={this.props.zoomOn} />) 
           }
         </Masonry>
       </div>
