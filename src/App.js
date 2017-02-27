@@ -99,20 +99,34 @@ class App extends Component {
 
   render() {
     return (
-      <article>
-        {
-          this.state.config
-           ? this.state.config.galleries.map((x,i) => <Section key={i} {...x} zoomOn={this.zoomOn.bind(this)}/>) 
-           : null
-        }
-        {
-          this.state.selected
-          ? <div className="modal">
-              <img src={this.state.selected} onClick={this.zoomOn.bind(this,null)}/>
-            </div>
-          : null
-        }
-      </article>
+      <div>
+        <header>
+          {
+            this.state.config
+            ? <div style={{
+                    backgroundImage: "url("+rooturl+"/images/"+this.state.config.banner+")",
+                    backgroundPosition: this.state.config.center,
+                  }}>
+                <label>{this.state.config.title}</label>
+              </div>
+            : null
+          }
+        </header>
+        <article>
+          {
+            this.state.config
+            ? this.state.config.galleries.map((x,i) => <Section key={i} {...x} zoomOn={this.zoomOn.bind(this)}/>) 
+            : null
+          }
+          {
+            this.state.selected
+            ? <div className="modal">
+                <img src={this.state.selected} onClick={this.zoomOn.bind(this,null)}/>
+              </div>
+            : null
+          }
+        </article>
+      </div>
     );
   }
 }

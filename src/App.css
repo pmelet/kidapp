@@ -28,6 +28,32 @@
   to { transform: rotate(360deg); }
 }
 
+header > div {
+  width: 100vw;
+  background-size: cover;
+  color: white;
+  font-size: 30px;
+  position: relative;
+}
+
+header > div > label {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  header > div {
+      height: 75vh;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  header > div {
+      height: 50vh;
+  }
+}
+
 h1 {
   text-align: center;  
   color: #555;
@@ -50,21 +76,28 @@ h1::after {
   right: 0;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 450px) {
+  .grid-sizer  { width: 100%; }
+  .grid-item-r { width: 100%; }
+  .grid-item-s { width: 100%; }
+  .grid-item-p { width: 100%; }
+}
+
+@media screen and (min-width: 451px) and (max-width: 640px) {
   .grid-sizer  { width:  50%; }
   .grid-item-r { width:  50%; }
   .grid-item-s { width:  50%; }
   .grid-item-p { width:  50%; }
 }
 
-@media screen and (min-width: 640px) and (max-width: 1024px) {
+@media screen and (min-width: 641px) and (max-width: 1024px) {
   .grid-sizer  { width:  6.25%; }
   .grid-item-r { width:  25%; }
   .grid-item-s { width:  31.25%; }
   .grid-item-p { width:  37.5%; }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
   .grid-sizer  { width:  5%; }
   .grid-item-r { width:  20%; }
   .grid-item-s { width:  25%; }
