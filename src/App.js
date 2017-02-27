@@ -33,7 +33,7 @@ class Photo extends Component {
   }
 
   zoomOn(name){
-    this.props.zoomOn(rooturl + "/web-sm/" + name);
+    this.props.zoomOn(rooturl + "/images/" + name);
     return false;
   }
 
@@ -48,7 +48,7 @@ class Photo extends Component {
           <img 
               onClick={this.zoomOn.bind(this,this.props.name)}
               alt={this.props.name} 
-              src={rooturl + "/web-sm/"+this.props.name}
+              src={rooturl + "/images/"+this.props.name}
               ref={(x) => { this.img = x }}
               onLoad={this.updateOrientation.bind(this)}/>
           <label>{Moment(this.props.name.split(".")[0], "YYYY-MM-DD-HHmm").subtract(55,"minutes").format("LLLL")}</label>
