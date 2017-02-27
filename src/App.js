@@ -98,6 +98,8 @@ class App extends Component {
   }
 
   render() {
+    if(this.state.config)
+      document.title = this.state.config.title;
     return (
       <div>
         <header>
