@@ -3,6 +3,7 @@ import Masonry from 'react-masonry-component';
 import logo from './logo.svg';
 import './App.css';
 import Moment from 'moment';
+import WayPoint from 'react-waypoint';
 
 Moment.lang('fr');
 
@@ -59,24 +60,42 @@ class Photo extends Component {
 }
 
 class Section extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showing: false }
+  }
+  _handleWaypointEnter(){
+    this.state.showing = true;
+    this.setState(this.state);
+    console.log("show",this.props.title);
+  }
+  _handleWaypointLeave(){
+
+  }
   render() {
     return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <Masonry options={{
-            // set itemSelector so .grid-sizer is not used in layout
-            itemSelector: '.grid-item',
-            // use element for option
-            columnWidth: '.grid-sizer',
-            percentPosition: true,
-          }}>
-          <div className="grid-sizer"/>
-          {
-            this.props.images.map((x,i) => 
-              <Photo key={i} name={x} zoomOn={this.props.zoomOn} />) 
-          }
-        </Masonry>
-      </div>
+      <WayPoint   
+        onEnter={this._handleWaypointEnter.bind(this)}
+        onLeave={this._handleWaypointLeave.bind(this)}>
+        <div style={{minHeight:"500px"}}>
+          <h1>{this.props.title}</h1>
+          <Masonry options={{
+              // set itemSelector so .grid-sizer is not used in layout
+              itemSelector: '.grid-item',
+              // use element for option
+              columnWidth: '.grid-sizer',
+              percentPosition: true,
+            }}>
+            <div className="grid-sizer"/>
+            {
+              this.state.showing 
+              ? this.props.images.map((x,i) => 
+                  <Photo key={i} name={x} zoomOn={this.props.zoomOn} />) 
+              : null
+            }
+          </Masonry>
+        </div>
+      </WayPoint>
     );
   }
 }
